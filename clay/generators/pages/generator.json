@@ -1,0 +1,11 @@
+{
+  "partials": [],
+  "formatters": [],
+  "steps": [
+    {
+      "generate": "templates/page.html.hbs",
+      "select": "$.model",
+      "target": "src/generated"
+    }
+  ]
+}

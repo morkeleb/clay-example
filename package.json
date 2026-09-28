@@ -1,0 +1,25 @@
+{
+  "name": "clay-example",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A small Clay example: a model, generated pages and handlers, and touch business logic.",
+  "type": "module",
+  "scripts": {
+    "validate": "tsx clay/validate-model.ts",
+    "generate": "npm run validate && clay generate clay/model.json .",
+    "typecheck": "node scripts/demo/typecheck.mjs",
+    "test": "tsx scripts/validate-touch-specs.ts && tsx --test clay/validate-model.spec.ts src/logic/note/create.spec.ts src/logic/note/rename.spec.ts src/runtime/handlers.spec.ts",
+    "dev": "tsx src/runtime/server.ts",
+    "check": "npm run validate && npm run typecheck && npm test",
+    "gifs": "bash scripts/record-gifs.sh"
+  },
+  "dependencies": {
+    "clay-generator": "^0.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "zod": "^3.24.3"
+  }
+}

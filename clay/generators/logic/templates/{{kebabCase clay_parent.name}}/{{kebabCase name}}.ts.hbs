@@ -1,0 +1,24 @@
+import type { {{pascalCase name}}{{pascalCase clay_parent.name}}Input, {{pascalCase clay_parent.name}} } from "../../generated/types";
+
+{{#if (eq name "create")}}
+// Business rule. Clay writes this file once. The spec next to it must be a real test.
+export function {{camelCase name}}{{pascalCase clay_parent.name}}(
+  input: {{pascalCase name}}{{pascalCase clay_parent.name}}Input,
+): {{pascalCase clay_parent.name}} {
+  void input;
+  return {
+{{#each clay_parent.fields}}
+    {{name}}: {{#if (eq type "boolean")}}false{{else}}""{{/if}},
+{{/each}}
+  };
+}
+{{else}}
+// Business rule. Clay writes this file once. The spec next to it must be a real test.
+export function {{camelCase name}}{{pascalCase clay_parent.name}}(
+  note: {{pascalCase clay_parent.name}},
+  input: {{pascalCase name}}{{pascalCase clay_parent.name}}Input,
+): {{pascalCase clay_parent.name}} {
+  void input;
+  return note;
+}
+{{/if}}

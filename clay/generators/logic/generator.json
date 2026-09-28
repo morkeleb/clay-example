@@ -1,0 +1,12 @@
+{
+  "partials": [],
+  "formatters": [],
+  "steps": [
+    {
+      "generate": "templates",
+      "select": "$.model.types[?(@.category=='entity')].mutations[*]",
+      "target": "src/logic",
+      "touch": true
+    }
+  ]
+}

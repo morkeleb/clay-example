@@ -1,0 +1,54 @@
+{
+  "gitattributes": true,
+  "automerge": true,
+  "models": [
+    {
+      "path": "clay/model.json",
+      "output": ".",
+      "generated_files": {
+        "src/generated/identity.ts": {
+          "md5": "a7f8951ef9fe2f3ca08aa579ac4a3f72",
+          "date": "2026-09-28T21:55:42.769Z"
+        },
+        "src/generated/types.ts": {
+          "md5": "357dff102625b0e571c6469d9a35516e",
+          "date": "2026-09-28T22:36:53.771Z"
+        },
+        "src/generated/forms/note/create.html": {
+          "md5": "74bbb1725576b34031da1eaaf0b8dece",
+          "date": "2026-09-28T22:36:02.848Z"
+        },
+        "src/generated/forms/note/rename.html": {
+          "md5": "40404bb68c18b8752edeb8159222f04c",
+          "date": "2026-09-28T21:55:42.775Z"
+        },
+        "src/generated/handlers/note/create.ts": {
+          "md5": "d231d48b9dc8bbc1064b4f0a508421c1",
+          "date": "2026-09-28T21:55:42.775Z"
+        },
+        "src/generated/handlers/note/rename.ts": {
+          "md5": "6fe3d953d57f77fdad764dc12f93ae2b",
+          "date": "2026-09-28T21:55:42.776Z"
+        },
+        "src/generated/page.html": {
+          "md5": "11c10e49a646b2f2736402fd1b12fb64",
+          "date": "2026-09-28T22:36:53.768Z"
+        },
+        "src/generated/queries/note/get.ts": {
+          "md5": "09a89a3c0bb28c84b16012c5bb4c44b7",
+          "date": "2026-09-28T21:55:42.776Z"
+        },
+        "src/generated/queries/note/list.ts": {
+          "md5": "badc6927dba56e2ef80c12b379ada95c",
+          "date": "2026-09-28T21:55:42.776Z"
+        },
+        "src/generated/routes.ts": {
+          "md5": "139e9551cd9c4a8c9be881c0d6c43c49",
+          "date": "2026-09-28T22:36:53.780Z"
+        }
+      },
+      "input_hash": "a99652f8d152fdcc028e1b014cdffd16",
+      "last_generated": "2026-09-28T22:36:53.780Z"
+    }
+  ]
+}

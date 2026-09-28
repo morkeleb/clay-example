@@ -1,0 +1,18 @@
+<form
+  data-entity="note"
+  data-mutation="rename"
+  data-action="/api/notes/rename"
+  hidden
+>
+  <h3>Rename</h3>
+  <p>Change the title.</p>
+  <label>
+    Id
+    <input name="id" type="text" required data-from-entity="id" readonly>
+  </label>
+  <label>
+    Title
+    <input name="title" type="text" required>
+  </label>
+  <button type="submit">Rename</button>
+</form>

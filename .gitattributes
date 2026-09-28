@@ -1,0 +1,13 @@
+# clay:generated:start
+.clay merge=clay-generator
+src/generated/forms/note/create.html linguist-generated=true
+src/generated/forms/note/rename.html linguist-generated=true
+src/generated/handlers/note/create.ts linguist-generated=true
+src/generated/handlers/note/rename.ts linguist-generated=true
+src/generated/identity.ts linguist-generated=true
+src/generated/page.html linguist-generated=true
+src/generated/queries/note/get.ts linguist-generated=true
+src/generated/queries/note/list.ts linguist-generated=true
+src/generated/routes.ts linguist-generated=true
+src/generated/types.ts linguist-generated=true
+# clay:generated:end

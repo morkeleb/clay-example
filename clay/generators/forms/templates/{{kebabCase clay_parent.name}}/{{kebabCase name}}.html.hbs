@@ -1,0 +1,20 @@
+<form
+  data-entity="{{kebabCase clay_parent.name}}"
+  data-mutation="{{name}}"
+  data-action="/api/{{kebabCase (pluralize clay_parent.name)}}/{{kebabCase name}}"
+  hidden
+>
+  <h3>{{startCase name}}</h3>
+  {{#if description}}<p>{{description}}</p>{{/if}}
+  {{#each input.fields}}
+  <label>
+    {{startCase name}}
+    {{#if (eq type "boolean")}}
+    <input name="{{name}}" type="checkbox">
+    {{else}}
+    <input name="{{name}}" type="text"{{#if required}} required{{/if}}{{#if (eq name "id")}} data-from-entity="id" readonly{{/if}}>
+    {{/if}}
+  </label>
+  {{/each}}
+  <button type="submit">{{startCase name}}</button>
+</form>

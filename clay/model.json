@@ -1,0 +1,113 @@
+{
+  "name": "shelf",
+  "generators": [
+    "./generators/types",
+    "./generators/queries",
+    "./generators/handlers",
+    "./generators/forms",
+    "./generators/pages",
+    "./generators/logic"
+  ],
+  "model": {
+    "identity": {
+      "roles": [
+        {
+          "name": "reader",
+          "permissions": [
+            "note.read"
+          ]
+        },
+        {
+          "name": "editor",
+          "permissions": [
+            "note.read",
+            "note.write"
+          ]
+        }
+      ]
+    },
+    "types": [
+      {
+        "name": "Note",
+        "category": "entity",
+        "fields": [
+          {
+            "name": "id",
+            "type": "uuid",
+            "required": true,
+            "primary": true,
+            "description": "Primary key."
+          },
+          {
+            "name": "title",
+            "type": "string",
+            "required": true,
+            "description": "Short title."
+          },
+          {
+            "name": "body",
+            "type": "string",
+            "required": true,
+            "description": "Note text."
+          }
+        ],
+        "queries": [
+          {
+            "name": "list",
+            "permission": "note.read",
+            "description": "Return every note."
+          },
+          {
+            "name": "get",
+            "permission": "note.read",
+            "description": "Return one note by id."
+          }
+        ],
+        "mutations": [
+          {
+            "name": "create",
+            "permission": "note.write",
+            "description": "Add a note.",
+            "input": {
+              "fields": [
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true,
+                  "description": "Short title."
+                },
+                {
+                  "name": "body",
+                  "type": "string",
+                  "required": true,
+                  "description": "Note text."
+                }
+              ]
+            }
+          },
+          {
+            "name": "rename",
+            "permission": "note.write",
+            "description": "Change the title.",
+            "input": {
+              "fields": [
+                {
+                  "name": "id",
+                  "type": "uuid",
+                  "required": true,
+                  "description": "Note to rename."
+                },
+                {
+                  "name": "title",
+                  "type": "string",
+                  "required": true,
+                  "description": "New title."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

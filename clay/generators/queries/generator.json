@@ -1,0 +1,11 @@
+{
+  "partials": [],
+  "formatters": [],
+  "steps": [
+    {
+      "generate": "templates",
+      "select": "$.model.types[?(@.category=='entity')].queries[*]",
+      "target": "src/generated/queries"
+    }
+  ]
+}

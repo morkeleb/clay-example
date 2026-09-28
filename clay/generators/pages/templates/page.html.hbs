@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Shelf</title>
+    <style>
+      :root { color-scheme: light; }
+      body { margin: 0; font-family: system-ui, sans-serif; color: #1c1c1c; background: #f7f6f3; }
+      header, main { max-width: 64rem; margin: 0 auto; padding: 1rem; }
+      header { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; justify-content: space-between; }
+      h1, h2, h3 { margin: 0 0 0.75rem; }
+      label { display: grid; gap: 0.25rem; }
+      select, input[type="text"], button { font: inherit; padding: 0.4rem 0.6rem; }
+      #message { min-height: 1.4rem; margin: 0; }
+      .layout { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+      @media (min-width: 800px) {
+        .layout { grid-template-columns: 1.2fr 1fr; align-items: start; }
+      }
+      table { width: 100%; border-collapse: collapse; background: #fff; }
+      th, td { text-align: left; padding: 0.45rem 0.5rem; border-bottom: 1px solid #ddd; vertical-align: top; overflow-wrap: break-word; }
+      th:first-child, td:first-child { overflow-wrap: anywhere; }
+      tbody tr { cursor: pointer; }
+      tbody tr[aria-selected="true"] { background: #e7eefc; }
+      dl { display: grid; gap: 0.6rem; margin: 0 0 1rem; }
+      dl div { display: grid; gap: 0.15rem; }
+      dt { font-size: 0.8rem; color: #555; }
+      dd { margin: 0; }
+      .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+      form { display: grid; gap: 0.75rem; margin-top: 1rem; padding: 1rem; background: #fff; border: 1px solid #ccc; }
+      form[hidden] { display: none; }
+      button { cursor: pointer; }
+      button:disabled { cursor: not-allowed; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Shelf</h1>
+        <p id="message" role="status"></p>
+      </div>
+      <label>
+        Role
+        <select id="role">
+          {{#each identity.roles}}
+          <option value="{{name}}"{{#if (eq name "editor")}} selected{{/if}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </label>
+    </header>
+    <main>
+      {{#each types}}
+      <section class="entity" data-entity="{{kebabCase name}}" data-collection="/api/{{kebabCase (pluralize name)}}">
+        <div class="layout">
+          <div>
+            <h2>{{pluralize name}}</h2>
+            <table>
+              <thead>
+                <tr>
+                  {{#each fields}}
+                  <th data-field="{{name}}">{{startCase name}}</th>
+                  {{/each}}
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div>
+            <h2>{{name}}</h2>
+            <dl>
+              {{#each fields}}
+              <div>
+                <dt>{{startCase name}}</dt>
+                <dd data-field="{{name}}"></dd>
+              </div>
+              {{/each}}
+            </dl>
+            <div class="actions">
+              {{#each mutations}}
+              <button type="button" data-open-mutation="{{name}}"{{#unless (eq name "create")}} data-needs-entity="true" disabled{{/unless}}>{{startCase name}}</button>
+              {{/each}}
+            </div>
+            <!-- clay:forms:{{kebabCase name}} -->
+          </div>
+        </div>
+      </section>
+      {{/each}}
+    </main>
+    <script src="/client.js"></script>
+  </body>
+</html>

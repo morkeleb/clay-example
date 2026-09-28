@@ -1,0 +1,16 @@
+{
+  "partials": [],
+  "formatters": [],
+  "steps": [
+    {
+      "generate": "templates/handler",
+      "select": "$.model.types[?(@.category=='entity')].mutations[*]",
+      "target": "src/generated/handlers"
+    },
+    {
+      "generate": "templates/routes.ts.hbs",
+      "select": "$.model",
+      "target": "src/generated"
+    }
+  ]
+}
