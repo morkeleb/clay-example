@@ -45,9 +45,11 @@ You pay the model edit. Clay writes the files. The clips type the edit in `vi`, 
 
 ### The LLM edits the model, not each file
 
-One mutation in `clay/model.json` is the whole change. Clay writes the form, the handler, the page, the route, and the touch files. `git diff --stat` is the line count you did not have to buy from the LLM.
+Adding `archive` to `clay/model.json` is 15 lines of JSON. Clay writes 58 lines across 7 files: the form, the handler, the page, the route, the type, and the touch file with its spec. `git diff --stat` is that count. You pay an LLM for the 15 lines. Clay writes the 58. That is the token efficiency of this example.
 
-![One mutation. The stat is the generated lines. The model row is the edit.](docs/gifs/token-efficiency.gif)
+Shelf is one entity, with no relations, in TypeScript. A larger model writes more from the same kind of edit, and a language with more boilerplate writes more still. This diff is the small case.
+
+![Adding archive. 15 lines in the model, 58 lines across 7 files.](docs/gifs/token-efficiency.gif)
 
 ### One change, only the affected files
 
