@@ -1,4 +1,4 @@
-Output docs/gifs/reject-unknown-key.gif
+Output docs/gifs/blocked-edit.gif
 Set Shell bash
 Set FontSize 16
 Set Width 1080
@@ -22,27 +22,18 @@ Show
 
 Type "clear"
 Enter
-Type "# Let's add a faulty field"
+Type "# Let's edit a generated file, the way an LLM would."
 Enter
 Sleep 3s
-Type "vi -u scripts/demo/vimrc clay/model.json"
+Type "node scripts/demo/agent-edit.mjs src/generated/types.ts"
 Enter
-Sleep 1s
-Type "/mutations"
-Enter
-Sleep 400ms
-Type `O        "commands": [],`
-Escape
-Sleep 400ms
-Type ":wq"
-Enter
-Sleep 1s
+Sleep 6s
 
 Type "clear"
 Enter
-Type "# The model rejects a key we did not define. The name is mutations."
+Type "# The touch file is yours. The hook allows that write."
 Enter
 Sleep 3s
-Type "npm run validate"
+Type "node scripts/demo/agent-edit.mjs src/logic/note/rename.ts"
 Enter
-Sleep 6s
+Sleep 4s

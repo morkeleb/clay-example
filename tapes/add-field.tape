@@ -1,10 +1,10 @@
 Output docs/gifs/add-field.gif
 Set Shell bash
 Set FontSize 16
-Set Width 1600
-Set Height 900
-Set Padding 24
-Set TypingSpeed 12ms
+Set Width 1080
+Set Height 608
+Set Padding 12
+Set TypingSpeed 14ms
 
 Hide
 Type "export PS1='$ '"
@@ -15,8 +15,6 @@ Type "export FORCE_COLOR=1"
 Enter
 Type "export TERM=xterm-256color"
 Enter
-Type `comment() { printf '\033[33m# %s\033[0m\n' "$*"; }`
-Enter
 Type "clear"
 Enter
 Sleep 200ms
@@ -24,7 +22,7 @@ Show
 
 Type "clear"
 Enter
-Type `comment "Token efficiency: one field in the model."`
+Type "# Let's add a field"
 Enter
 Sleep 3s
 Type "vi -u scripts/demo/vimrc clay/model.json"
@@ -32,10 +30,10 @@ Enter
 Sleep 1s
 Type "/Note text."
 Enter
-Sleep 500ms
+Sleep 400ms
 Type "jA,"
 Escape
-Sleep 300ms
+Sleep 400ms
 Type "o          {"
 Enter
 Type `            "name": "pinned",`
@@ -48,30 +46,34 @@ Type `            "description": "True when the note stays at the top."`
 Enter
 Type "          }"
 Escape
-Sleep 500ms
+Sleep 400ms
 Type ":wq"
 Enter
 Sleep 1s
 
 Type "clear"
 Enter
-Type `comment "Only the type and the page change. Handlers and queries stay put."`
+Type "# Generate. Clay rewrites only the files that show this field."
 Enter
 Sleep 3s
 Type "npm run generate"
 Enter
 Sleep 4s
+
 Type "clear"
 Enter
-Type "git --no-pager diff --stat"
+Type "# git diff --stat -- src. Line counts for the type and the page only."
+Enter
+Sleep 3s
+Type "git --no-pager diff --stat -- src"
 Enter
 Sleep 5s
 
 Type "clear"
 Enter
-Type `comment "Integrity: tsc fails until the touch file the handler calls returns pinned."`
+Type "# tsc fails. The touch file the handler calls still omits pinned."
 Enter
 Sleep 3s
 Type "npm run typecheck"
 Enter
-Sleep 7s
+Sleep 6s

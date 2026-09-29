@@ -1,4 +1,4 @@
-Output docs/gifs/add-mutation.gif
+Output docs/gifs/token-efficiency.gif
 Set Shell bash
 Set FontSize 16
 Set Width 1080
@@ -22,7 +22,7 @@ Show
 
 Type "clear"
 Enter
-Type "# Let's add a mutation"
+Type "# Let's add a mutation. Pay for this edit, not for each file."
 Enter
 Sleep 3s
 Type "vi -u scripts/demo/vimrc clay/model.json"
@@ -71,30 +71,21 @@ Sleep 1s
 
 Type "clear"
 Enter
-Type "# Generate. One mutation writes the form, the handler, and the touch files."
+Type "# Generate. Clay writes the form, the handler, the page, the route, and the touch files."
 Enter
 Sleep 3s
 Type "npm run generate"
 Enter
-Sleep 4s
+Sleep 8s
 
 Type "clear"
 Enter
-Type "# git add -N lets diff see new files. --name-status: A added, M modified."
+Type "# git add -N marks new files. --stat is the lines the LLM did not write."
 Enter
 Sleep 3s
 Type "git add -N src"
 Enter
 Sleep 1s
-Type "git --no-pager diff --name-status -- src"
-Enter
-Sleep 5s
-
-Type "clear"
-Enter
-Type "# The touch spec stays a scaffold until the test is implemented."
-Enter
-Sleep 3s
-Type "npm test"
+Type "git --no-pager diff --stat -- clay/model.json src"
 Enter
 Sleep 6s

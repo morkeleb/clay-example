@@ -20,18 +20,22 @@ if ! git rev-parse --verify demo-baseline >/dev/null 2>&1; then
 fi
 
 restore() {
-  mkdir -p /tmp/shelf-gifs
-  cp docs/gifs/*.gif /tmp/shelf-gifs/ 2>/dev/null || true
-  git reset --hard demo-baseline
-  git clean -fd
-  cp /tmp/shelf-gifs/*.gif docs/gifs/ 2>/dev/null || true
+  git reset --mixed demo-baseline
+  git checkout demo-baseline -- clay src .clay .gitattributes
+  git clean -fd -- clay src
 }
 
 restore
 
+vhs tapes/layout.tape
+restore
 vhs tapes/add-field.tape
 restore
 vhs tapes/add-mutation.tape
+restore
+vhs tapes/token-efficiency.tape
+restore
+vhs tapes/blocked-edit.tape
 restore
 vhs tapes/reject-unknown-key.tape
 restore
