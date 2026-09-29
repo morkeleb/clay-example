@@ -1,3 +1,5 @@
+Hand-written code and LLM-generated code both drift. A pagination parameter or an access check is implemented slightly differently each time a person or a model touches it. Clay's model is the one machine-checked reference, and every generated file is checked against it. A master gauge did this job in 19th-century interchangeable-parts manufacturing: nothing passed that did not match it.
+
 # Shelf
 
 Shelf is a small [Clay](https://github.com/morkeleb/clay) app you can run and share. One entity, `Note`. The model is the source. Clay writes the types, the page, the forms, and the handlers. You write the business rule once, in a touch file, and a spec sits next to it.
@@ -63,7 +65,7 @@ The same move works in a template. One line in the form template adds a Cancel b
 
 ### The model only accepts its own vocabulary
 
-`clay/validate-model.ts` checks `clay/model.json` before Clay runs. An unknown key fails, and the error names the allowed keys. `commands` is not a key. The name is `mutations`.
+`clay/validate-model.ts` checks `clay/model.json` before Clay runs. An unknown key fails, and the error names the allowed keys. `commands` is not a key. The name is `mutations`. This validation makes the model a fixed reference rather than documentation. Every generated file is checked against that one source instead of trusted to match by convention.
 
 ![An unknown key. The validator names the allowed keys.](docs/gifs/reject-unknown-key.gif)
 
@@ -82,13 +84,13 @@ The same move works in a template. One line in the form template adds a Cancel b
 
 ### Generated files stay closed
 
-`clay init-claude` writes `.claude/settings.json`. Before an Edit or a Write, Claude Code runs `clay check-generated`. A generated path is refused. The touch file under `src/logic/` is allowed, because Clay does not own it. The clip is a small agent transcript. The refusal is the real hook.
+`clay init-claude` writes `.claude/settings.json`. Before an Edit or a Write, Claude Code runs `clay check-generated`. A generated path is refused. The touch file under `src/logic/` is allowed, because Clay does not own it. That file is the one deliberately hand-authored surface, where judgment still lives, and the types and the tests matter most there because nothing upstream protects it. The clip is a small agent transcript. The refusal is the real hook.
 
 ![An agent write to a generated file is blocked. The touch file is allowed.](docs/gifs/blocked-edit.gif)
 
 ### Security lives in the template
 
-The role check is one line in the handler template. Clay copies it into every handler. A reader who calls a mutation gets HTTP 403 from that check.
+The role check is one line in the handler template. Clay copies it into every handler. A reader who calls a mutation gets HTTP 403 from that check. Access-control drift is structurally impossible here: the check is in the template, so a handler cannot omit it, and the tests are not what keep it in place.
 
 ![One line in the handler template. Every handler checks the role.](docs/gifs/role-check.gif)
 
